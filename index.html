@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sitraka Paul Randrianarijaona — Marketing & Business Analyst</title>
-  <meta name="description" content="Portfolio de Sitraka Paul Randrianarijaona, diplômé d'un Master en Marketing, expérience en marketing digital et Business Analysis." />
+  <title>Sitraka Paul Randrianarijaona — Business Analyst & Gestion de projet digital</title>
+  <meta name="description" content="Portfolio de Sitraka Paul Randrianarijaona : MBA (University of Technology, Mauritius), Master en Marketing Management Innovation, Business Analysis, gestion de projet digital et marketing digital." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://s1traka.github.io/" />
-  <meta property="og:title" content="Sitraka Paul Randrianarijaona — Marketing & Business Analyst" />
-  <meta property="og:description" content="Master en Marketing · Expérience en marketing digital (Groupe Metropole) et Business Analysis (eTECH Consulting)." />
+  <meta property="og:title" content="Sitraka Paul Randrianarijaona — Business Analyst & Digital Project Management" />
+  <meta property="og:description" content="MBA @ University of Technology, Mauritius · Business Analysis (Jira, Scrum, Google Cloud) · Marketing digital · Photographie" />
   <meta property="og:image" content="https://s1traka.github.io/photo.jpg" />
   <meta name="twitter:card" content="summary" />
   <script>
-    // FX are ON by default; visitors can switch them off with the FX toggle (remembered)
+    // FX are ON by default; visitors can switch them off (remembered)
     if (localStorage.getItem("motion") === "off") document.documentElement.classList.add("reduce-motion");
   </script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0b10'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-weight='700' font-size='30' fill='%234f7cff'%3ESP%3C/text%3E%3C/svg%3E" />
@@ -26,8 +26,8 @@
   <!-- Boot loader -->
   <div class="loader" aria-hidden="true">
     <div class="loader-inner">
-      <p class="loader-line">&gt; compilation des données du profil<span class="dots"></span></p>
-      <p class="loader-dna">0101</p>
+      <p class="loader-line"><span data-i18n="loader">&gt; chargement du backlog du profil</span><span class="dots"></span></p>
+      <p class="loader-dna">PRT-001</p>
       <div class="loader-bar"><i></i></div>
       <p class="loader-pct">0%</p>
     </div>
@@ -35,9 +35,7 @@
 
   <canvas id="network" aria-hidden="true"></canvas>
   <canvas id="helix" aria-hidden="true"></canvas>
-  <nav class="dna-nav" aria-label="Séquences">
-    <canvas class="dna-nav-canvas" aria-hidden="true"></canvas>
-  </nav>
+  <nav class="dna-nav" aria-label="Roadmap"></nav>
   <div class="grid-bg" aria-hidden="true"></div>
   <div class="cursor-glow" aria-hidden="true"></div>
   <div class="scroll-progress" aria-hidden="true"></div>
@@ -46,17 +44,19 @@
 
   <header class="nav">
     <a href="#top" class="logo">SP<span>.</span></a>
-    <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
-      <span></span><span></span>
-    </button>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
     <nav class="nav-links">
-      <a href="#about">À propos</a>
-      <a href="#experience">Expérience</a>
-      <a href="#education">Formation</a>
-      <a href="#skills">Compétences</a>
-      <a href="#certificates">Certificats</a>
-      <a href="#contact" class="nav-cta">Contact</a>
-      <button class="fx-toggle" type="button" aria-pressed="true" title="Activer / désactiver les animations">FX <b>ON</b></button>
+      <a href="#about" data-i18n="nav.about">À propos</a>
+      <a href="#experience" data-i18n="nav.exp">Expérience</a>
+      <a href="#projects" data-i18n="nav.projects">Projets</a>
+      <a href="#education" data-i18n="nav.edu">Formation</a>
+      <a href="#skills" data-i18n="nav.skills">Compétences</a>
+      <a href="#photography" data-i18n="nav.photo">Photo</a>
+      <a href="#contact" class="nav-cta" data-i18n="nav.contact">Contact</a>
+      <span class="nav-switches">
+        <button class="lang-toggle" type="button" title="Français / English"><b data-l="fr">FR</b>·<b data-l="en">EN</b></button>
+        <button class="fx-toggle" type="button" aria-pressed="true" title="Animations">FX <b>ON</b></button>
+      </span>
     </nav>
   </header>
 
@@ -65,208 +65,332 @@
     <section class="hero" id="home">
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="hero-text reveal">
-        <p class="eyebrow">Disponible pour de nouvelles opportunités</p>
+        <p class="eyebrow" data-i18n="hero.eyebrow">Ouvert aux stages &amp; opportunités · MBA en cours</p>
         <h1><span class="glitch" data-text="Sitraka Paul">Sitraka Paul</span><br /><span class="grad">Randrianarijaona</span></h1>
-        <p class="role"><span class="prompt">&gt;_</span> <span id="scramble">Marketing digital</span><span class="caret"></span></p>
-        <p class="lead">
-          Jeune diplômé d'un Master en Marketing, avec une expérience pratique en marketing
-          numérique et en Business Analysis. Compétent dans la création de contenu et
-          l'optimisation des performances.
+        <p class="role"><span class="prompt">&gt;_</span> <span id="scramble">Business Analyst</span><span class="caret"></span></p>
+        <p class="lead" data-i18n="hero.lead">
+          Diplômé d'un Master en Marketing Management Innovation (ISCAM), je poursuis un
+          <strong>MBA général à l'University of Technology, Mauritius</strong> depuis octobre 2026.
+          J'ai une expérience en <strong>Business Analysis</strong> (projets Google Cloud, Jira, Scrum)
+          et en <strong>marketing digital</strong>, et je photographie produits et événements.
         </p>
         <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">Me contacter</a>
-          <a href="cv.pdf" class="btn btn-ghost" download>Télécharger le CV</a>
+          <a href="#projects" class="btn btn-primary" data-i18n="hero.cta1">Voir mes projets</a>
+          <a href="cv.pdf" class="btn btn-ghost" download data-i18n="hero.cta2">CV (PDF)</a>
         </div>
       </div>
       <div class="hero-photo reveal">
         <div class="photo-ring">
           <span class="orbit" aria-hidden="true"></span>
-          <!-- Placez votre photo dans le dossier sous le nom "photo.jpg" -->
-          <img src="photo.jpg" alt="Portrait de Sitraka Paul Randrianarijaona"
-               onerror="this.remove()" />
+          <img src="photo.jpg" alt="Portrait de Sitraka Paul Randrianarijaona" onerror="this.remove()" />
           <span class="initials">SP</span>
         </div>
-        <div class="badge">📍 Antananarivo, Madagascar</div>
+        <div class="badge" data-i18n="hero.badge">🎓 MBA · University of Technology, Mauritius</div>
       </div>
     </section>
 
     <!-- STATS -->
-    <p class="stats-caption reveal">Résultats obtenus pour mes employeurs lors de mes stages</p>
+    <p class="stats-caption reveal" data-i18n="stats.caption">Indicateurs suivis pendant mes stages — résultats obtenus en équipe</p>
     <section class="stats reveal">
       <div>
-        <strong class="counter" data-target="1915" data-prefix="+">+1 915</strong>
-        <span>nouveaux abonnés en moyenne par page gérée</span>
-        <small>Pages du Groupe Metropole · stage WAKA, 2022</small>
-      </div>
-      <div>
         <strong class="counter" data-target="780" data-prefix="+">+780</strong>
-        <span>mentions « j'aime » gagnées en moyenne par page</span>
-        <small>Pages du Groupe Metropole · stage WAKA, 2022</small>
+        <span data-i18n="stats.1">mentions « j'aime » gagnées en moyenne par page Facebook</span>
+        <small data-i18n="stats.src1">5 pharmacies du Groupe Métropole · janv.–mars 2022</small>
       </div>
       <div>
-        <strong class="counter" data-target="11">11</strong>
-        <span>supports digitaux gérés : 9 pages Instagram/Facebook, 1 page LinkedIn, 1 site web</span>
-        <small>Groupe Metropole · stage WAKA, 2022</small>
+        <strong class="counter" data-target="915" data-prefix="+">+915</strong>
+        <span data-i18n="stats.2">abonnés gagnés en moyenne par page Facebook</span>
+        <small data-i18n="stats.src1">5 pharmacies du Groupe Métropole · janv.–mars 2022</small>
+      </div>
+      <div>
+        <strong class="counter" data-target="3" data-prefix="×">×3</strong>
+        <span data-i18n="stats.3">abonnés sur la page la plus récente du groupe (513 → 1 523)</span>
+        <small data-i18n="stats.src1">5 pharmacies du Groupe Métropole · janv.–mars 2022</small>
       </div>
       <div>
         <strong class="counter" data-target="4">4</strong>
-        <span>projets Google Cloud Platform gérés en tant que Business Analyst</span>
-        <small>eTECH Consulting · stage, 2023</small>
+        <span data-i18n="stats.4">projets Google Cloud Platform suivis en Business Analysis</span>
+        <small data-i18n="stats.src4">eTECH Consulting · 2023</small>
       </div>
     </section>
 
-    <!-- MARQUEE (moves with scroll speed & direction) -->
+    <!-- MARQUEE -->
     <section class="marquee" aria-hidden="true">
       <div class="marquee-row" data-dir="1">
         <div class="marquee-track">
-          <span>Marketing digital</span><b>✦</b><span>Business Analysis</span><b>✦</b><span>Création de contenu</span><b>✦</b><span>Community management</span><b>✦</b><span>Google Cloud</span><b>✦</b><span>Études de marché</span><b>✦</b>
+          <span>Business Analysis</span><b>◆</b><span>Jira · Kanban</span><b>◆</b><span>Daily Scrum</span><b>◆</b><span>Google Cloud</span><b>◆</b><span>Release Notes</span><b>◆</b><span>Marketing digital</span><b>◆</b>
         </div>
       </div>
       <div class="marquee-row outline" data-dir="-1">
         <div class="marquee-track">
-          <span>Innovation</span><b>✦</b><span>Engagement</span><b>✦</b><span>Stratégie</span><b>✦</b><span>Performance</span><b>✦</b><span>Communication</span><b>✦</b><span>Analyse</span><b>✦</b>
+          <span>Backlog</span><b>◆</b><span>Sprint</span><b>◆</b><span>KPI</span><b>◆</b><span>Roadmap</span><b>◆</b><span>SWOT · PESTEL</span><b>◆</b><span>Business Model Canvas</span><b>◆</b>
         </div>
       </div>
     </section>
 
     <!-- ABOUT -->
     <section id="about" class="section">
-      <h2 class="section-title reveal"><span>01</span> À propos</h2>
+      <h2 class="section-title reveal"><span>01</span> <span data-i18n="about.title">À propos</span></h2>
       <div class="about-grid">
         <div class="card reveal">
-          <h3>Mes objectifs</h3>
-          <p>Acquérir une expérience pratique dans divers postes, tout en apportant une contribution
-            significative au succès de l'équipe.</p>
-          <p>Utiliser mes connaissances et mes expériences pour promouvoir l'efficacité et
-            l'innovation au sein de l'entreprise.</p>
+          <h3 data-i18n="about.h1">Mon profil</h3>
+          <p data-i18n="about.p1">Profil hybride <strong>business &amp; tech</strong> : formé au marketing et au management de l'innovation, j'ai travaillé côté projet (Business Analyst, Jira, Scrum) et côté communication digitale (suivi de KPI, gestion de pages, contenus).</p>
+          <p data-i18n="about.p2">Mon objectif : contribuer à des projets digitaux en faisant le lien entre les besoins métier, les équipes techniques et les utilisateurs — avec des données pour décider.</p>
         </div>
         <div class="card reveal">
-          <h3>Centres d'intérêt</h3>
+          <h3 data-i18n="about.h2">En dehors du travail</h3>
           <ul class="tags">
+            <li data-i18n="about.t1">📷 Photographie produit &amp; événementielle</li>
+            <li data-i18n="about.t2">🖥️ Technologie &amp; homelab</li>
             <li>🏀 Basketball</li>
-            <li>📷 Photographie</li>
-            <li>🎵 Musique</li>
+            <li data-i18n="about.t3">🎵 Musique</li>
           </ul>
-          <p class="muted">Motivé à apprendre et à contribuer au succès d'une équipe dynamique.</p>
+          <p class="muted" data-i18n="about.p3">Curieux, j'aime comprendre comment les outils fonctionnent — et comment ils peuvent servir un objectif business.</p>
         </div>
       </div>
     </section>
 
     <!-- EXPERIENCE -->
     <section id="experience" class="section">
-      <h2 class="section-title reveal"><span>02</span> Expérience professionnelle</h2>
+      <h2 class="section-title reveal"><span>02</span> <span data-i18n="exp.title">Expérience professionnelle</span></h2>
       <ol class="timeline">
         <li class="reveal">
-          <div class="tl-date">Juil. 2023 — Nov. 2023</div>
+          <div class="tl-date" data-i18n="exp.1.date">Juil. 2023 — Nov. 2023 · Stage</div>
           <div class="tl-body card">
-            <h3>Stagiaire Business Analyst</h3>
+            <h3 data-i18n="exp.1.role">Stagiaire Business Analyst</h3>
             <p class="company">eTECH Consulting</p>
-            <ul>
-              <li>Gestion de 4 projets Google Cloud Platform</li>
-              <li>Rédaction de 3 notes de version</li>
-              <li>Mise à jour et finalisation du guide utilisateur d'un projet</li>
-              <li>Animation de 3 démonstrations de versions d'application</li>
+            <ul data-i18n="exp.1.list">
+              <li>Suivi de <strong>4 projets Google Cloud Platform</strong> pour des clients de l'entreprise</li>
+              <li>Gestion des tickets sur <strong>Jira</strong> (tableau Kanban) : rédaction et qualification de tickets de bug avec captures et étapes de reproduction</li>
+              <li>Participation aux <strong>daily scrums</strong> (fait / à faire / blocages) sur Skype puis Teams</li>
+              <li>Rédaction de <strong>3 notes de version</strong>, mise à jour et finalisation du <strong>guide utilisateur</strong> d'un projet</li>
+              <li>Animation de <strong>3 démonstrations</strong> de versions d'application ; suivi de fonctionnalités d'intégration cartographique</li>
             </ul>
+            <ul class="chips"><li>Jira</li><li>Kanban</li><li>Scrum</li><li>Skype / Teams</li><li>Google Cloud</li><li>Excel</li><li>Google Sheets</li></ul>
           </div>
         </li>
         <li class="reveal">
-          <div class="tl-date">Janv. 2022 — Mars 2022</div>
+          <div class="tl-date" data-i18n="exp.2.date">Janv. 2022 — Mars 2022 · Stage</div>
           <div class="tl-body card">
-            <h3>Stagiaire Marketing</h3>
-            <p class="company">WAKA (Groupe Metropole)</p>
-            <ul>
-              <li>Conception du calendrier éditorial du groupe pour une année</li>
-              <li>Gestion des contenus des pages du groupe : 9 pages Instagram & Facebook, 1 page LinkedIn et le site web</li>
-              <li>Résultat sur les pages du groupe : en moyenne +780 mentions « j'aime » et +1 915 abonnés par page</li>
-              <li>Amélioration du taux d'engagement des pages du groupe</li>
+            <h3 data-i18n="exp.2.role">Stagiaire Marketing digital</h3>
+            <p class="company">WAKA (Groupe Métropole)</p>
+            <p class="context" data-i18n="exp.2.ctx">WAKA est le back-office commun des 5 pharmacies du Groupe Métropole, dont la Pharmacie Métropole, la plus ancienne pharmacie de Madagascar (1949).</p>
+            <ul data-i18n="exp.2.list">
+              <li>Compilation <strong>quotidienne et mensuelle des KPI</strong> (abonnés, mentions j'aime, portée, taux d'engagement) des pages Facebook &amp; Instagram des 5 pharmacies sur Excel</li>
+              <li>Création de visuels et <strong>programmation des publications</strong> (Meta Business Suite, Creator Studio) selon le plan média ; calendrier éditorial annuel</li>
+              <li>Gestion des contenus de 9 pages Instagram/Facebook, 1 page LinkedIn et mise à jour du bloc « pharmacies de garde » du site web du groupe</li>
+              <li>Participation au projet d'<strong>unification des pages Facebook</strong> des 5 pharmacies (routage des messages par chatbot)</li>
+              <li>Animations des journées spéciales (14 février, 8 mars) et recherche de fournisseurs pour les décorations</li>
             </ul>
+            <ul class="chips"><li>Excel</li><li>Meta Business Suite</li><li>Canva</li><li>Photoshop</li><li>KPI</li></ul>
           </div>
         </li>
         <li class="reveal">
-          <div class="tl-date">Juil. 2021 — Août 2021</div>
+          <div class="tl-date" data-i18n="exp.3.date">Juil. 2021 — Août 2021 · Stage</div>
           <div class="tl-body card">
-            <h3>Enquêteur terrain</h3>
+            <h3 data-i18n="exp.3.role">Stagiaire — études &amp; enquêtes</h3>
             <p class="company">UCODIS Tsaralalana</p>
-            <ul>
-              <li>Enquêtes clients pour collecter des données influençant les stratégies marketing</li>
-              <li>Enquêtes téléphoniques auprès des revendeurs pour améliorer la distribution</li>
+            <ul data-i18n="exp.3.list">
+              <li>Enquêtes auprès des clients pour collecter des données utiles aux stratégies marketing</li>
+              <li>Enquêtes téléphoniques auprès des revendeurs pour améliorer les stratégies de distribution</li>
             </ul>
+            <ul class="chips"><li data-i18n="chip.survey">Enquêtes</li><li data-i18n="chip.data">Collecte de données</li></ul>
           </div>
         </li>
       </ol>
     </section>
 
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <h2 class="section-title reveal"><span>03</span> <span data-i18n="proj.title">Projets &amp; études de cas</span></h2>
+      <div class="projects">
+
+        <article class="project card reveal">
+          <div class="project-head">
+            <p class="project-meta" data-i18n="p1.meta">Mémoire de Master · 2024 · Projet de création d'entreprise</p>
+            <h3>VonjyMaika</h3>
+            <p class="project-sub" data-i18n="p1.sub">Application mobile de gestion des urgences à Madagascar (région Analamanga)</p>
+          </div>
+          <div class="case">
+            <div><h4 data-i18n="case.ctx">Contexte</h4><p data-i18n="p1.ctx">L'insécurité est une préoccupation forte à Madagascar : selon l'enquête Afrobaromètre citée dans le mémoire, 45 % des Malgaches craignaient de subir un crime chez eux en 2013, contre 28 % en 2005. « Vonjy » (secours) + « Maika » (urgence).</p></div>
+            <div><h4 data-i18n="case.approach">Démarche</h4><p data-i18n="p1.approach">Approche itérative (concept → prototype → tests). Analyse SWOT / PESTEL, QQOQCCP, Business Model Canvas, marketing mix 7P, tarification par profil d'utilisateur, plan de communication de lancement, protection de la propriété intellectuelle (OMAPI) et prévisions financières sur 5 ans.</p></div>
+            <div><h4 data-i18n="case.deliv">Livrables</h4>
+              <ul class="deliverables" data-i18n="p1.deliv">
+                <li>Maquette de l'application (Adobe XD)</li>
+                <li>Matrice de droits utilisateurs (ci-dessous)</li>
+                <li>Compte de résultat, seuil de rentabilité, bilan, plan de financement, budget de trésorerie</li>
+                <li>Prototype interactif (Google AI Studio, 2026) : suivi en temps réel, bénévolat communautaire, signalement hors ligne</li>
+              </ul>
+            </div>
+          </div>
+          <details class="matrix">
+            <summary data-i18n="p1.matrix">Voir la matrice de droits (profils × fonctionnalités)</summary>
+            <div class="matrix-body">
+              <p class="muted" data-i18n="p1.matrix.note">Définir qui peut faire quoi dans l'application : un livrable clé de Business Analysis.</p>
+              <div class="matrix-cols">
+                <div><h5 data-i18n="p1.profiles">Profils</h5><ul class="chips" data-i18n="p1.profiles.list"><li>Visiteurs</li><li>Utilisateurs enregistrés</li><li>Familles : parents / enfants</li><li>Entreprises clientes : managers / terrain</li><li>Autorités</li><li>Admin interne</li></ul></div>
+                <div><h5 data-i18n="p1.features">Fonctionnalités</h5><ul class="chips" data-i18n="p1.features.list"><li>Carte des évènements</li><li>Carte hors ligne</li><li>Signalement d'évènement</li><li>Appel d'alerte</li><li>Position des proches</li><li>Notifications de danger</li><li>Gestion (CRUD) des évènements</li><li>Réception d'alertes</li><li>Astuces de survie</li></ul></div>
+              </div>
+            </div>
+          </details>
+          <ul class="chips"><li>Business Model Canvas</li><li>SWOT · PESTEL</li><li>7P</li><li data-i18n="chip.fin">Prévisions financières</li><li>Adobe XD</li><li>Google AI Studio</li></ul>
+        </article>
+
+        <article class="project card reveal">
+          <div class="project-head">
+            <p class="project-meta" data-i18n="p2.meta">Rapport de stage de Licence · 2022 · WAKA (Groupe Métropole)</p>
+            <h3 data-i18n="p2.title">Lien entre digital et performance</h3>
+            <p class="project-sub" data-i18n="p2.sub">Diagnostic du marketing digital de 5 pharmacies et plan d'action</p>
+          </div>
+          <div class="case">
+            <div><h4 data-i18n="case.question">Question</h4><p data-i18n="p2.q">« Comment le digital influence-t-il la performance de l'entreprise ? » — les objectifs fixés étaient +84 abonnés par page et par mois, et un taux d'engagement mensuel entre 5 % et 10 %.</p></div>
+            <div><h4 data-i18n="case.findings">Constats</h4><p data-i18n="p2.f">L'objectif d'abonnés a été largement dépassé (jusqu'à +666 en février sur la page la plus récente), mais l'engagement est resté à 4 % sur les pages les plus suivies, contre 7 % sur la plus récente : <strong>plus une page a d'abonnés, plus son engagement baisse</strong> — signe d'un contenu à mieux cibler.</p></div>
+            <div><h4 data-i18n="case.tools">Méthode</h4><p data-i18n="p2.m">Suivi des KPI sur Excel, entretiens, observation ; diagnostic SWOT (FFOM) avec les 5M d'Ishikawa et PESTEL ; priorisation des recommandations par matrice d'Eisenhower, plan d'action et budget chiffré.</p></div>
+          </div>
+          <ul class="chips"><li>KPI</li><li>Excel</li><li>SWOT</li><li>Ishikawa 5M</li><li>PESTEL</li><li>Eisenhower</li></ul>
+        </article>
+
+        <article class="project card reveal">
+          <div class="project-head">
+            <p class="project-meta" data-i18n="p3.meta">Expérience · eTECH Consulting · 2023</p>
+            <h3 data-i18n="p3.title">Suivi qualité &amp; tickets en mode Agile</h3>
+            <p class="project-sub" data-i18n="p3.sub">Le quotidien d'un Business Analyst sur des projets Google Cloud</p>
+          </div>
+          <div class="kanban" aria-hidden="true">
+            <div class="kcol"><h6>To do</h6><span class="kcard">BUG · <i data-i18n="k.1">Panneau inutile à supprimer</i></span><span class="kcard">DOC · <i data-i18n="k.2">Guide utilisateur</i></span></div>
+            <div class="kcol"><h6>In progress</h6><span class="kcard">QA · <i data-i18n="k.3">Recette de la version</i></span></div>
+            <div class="kcol"><h6>Done</h6><span class="kcard">REL · <i data-i18n="k.4">Note de version</i></span><span class="kcard">DEMO · <i data-i18n="k.5">Démo client</i></span></div>
+          </div>
+          <div class="case">
+            <div><h4 data-i18n="case.role">Mon rôle</h4><p data-i18n="p3.r">Faire le lien entre le client et l'équipe de développement : reproduire et documenter les anomalies, rédiger des tickets clairs, suivre leur avancement sur le tableau Kanban, puis valider les corrections avant les démonstrations.</p></div>
+            <div><h4 data-i18n="case.rituals">Rituels</h4><p data-i18n="p3.rit">Daily scrum : ce qui a été fait, ce qui sera fait, les blocages. Communication d'équipe sur Skype puis Microsoft Teams.</p></div>
+          </div>
+          <ul class="chips"><li>Jira</li><li>Kanban</li><li>Daily Scrum</li><li data-i18n="chip.bug">Qualification de bugs</li><li>Release notes</li></ul>
+        </article>
+
+      </div>
+    </section>
+
     <!-- EDUCATION -->
     <section id="education" class="section">
-      <h2 class="section-title reveal"><span>03</span> Formation</h2>
+      <h2 class="section-title reveal"><span>04</span> <span data-i18n="edu.title">Formation</span></h2>
       <div class="edu-grid">
+        <article class="card reveal edu-current">
+          <p class="tl-date" data-i18n="edu.0.date">Depuis oct. 2026 · en cours</p>
+          <h3 data-i18n="edu.0.t">MBA (General)</h3>
+          <p class="company">University of Technology, Mauritius</p>
+        </article>
         <article class="card reveal">
           <p class="tl-date">2022 — 2024</p>
-          <h3>Master en Marketing Management Innovation</h3>
-          <p class="company">ISCAM Business School, Ankadifotsy</p>
+          <h3 data-i18n="edu.1.t">Master en Marketing Management Innovation</h3>
+          <p class="company">ISCAM Business School, Antananarivo</p>
+          <p class="muted" data-i18n="edu.1.n">Mémoire : application VonjyMaika</p>
         </article>
         <article class="card reveal">
           <p class="tl-date">2019 — 2022</p>
-          <h3>Licence en Marketing Communication</h3>
-          <p class="company">ISCAM Business School, Ankadifotsy</p>
-        </article>
-        <article class="card reveal">
-          <p class="tl-date">2019</p>
-          <h3>Baccalauréat, Série A2</h3>
-          <p class="company">Collège Saint Michel Amparibe, Antananarivo</p>
+          <h3 data-i18n="edu.2.t">Licence en Marketing Communication</h3>
+          <p class="company">ISCAM Business School, Antananarivo</p>
+          <p class="muted" data-i18n="edu.2.n">Rapport : lien entre digital et performance</p>
         </article>
       </div>
     </section>
 
     <!-- SKILLS -->
     <section id="skills" class="section">
-      <h2 class="section-title reveal"><span>04</span> Compétences & langues</h2>
-      <div class="about-grid">
+      <h2 class="section-title reveal"><span>05</span> <span data-i18n="skills.title">Compétences &amp; outils</span></h2>
+      <div class="skills-grid">
         <div class="card reveal">
-          <h3>Outils</h3>
-          <div class="bar" style="--lvl: 75%"><span>Microsoft Office</span><i></i></div>
-          <div class="bar" style="--lvl: 50%"><span>Adobe Photoshop</span><i></i></div>
-          <div class="bar" style="--lvl: 75%"><span>Canva</span><i></i></div>
-          <ul class="tags">
-            <li>Marketing digital</li><li>Création de contenu</li><li>Community management</li>
-            <li>Calendrier éditorial</li><li>Business Analysis</li><li>Documentation produit</li>
-            <li>Études de marché</li>
-          </ul>
+          <h3 data-i18n="skills.h1">Gestion de projet &amp; BA</h3>
+          <ul class="chips" data-i18n="skills.l1"><li>Jira (tickets, Kanban)</li><li>Daily scrum</li><li>Qualification de bugs</li><li>Notes de version</li><li>Guide utilisateur</li><li>Démos &amp; recette</li><li>Matrice de droits</li><li>Intégration cartographique</li><li>Projets Google Cloud</li></ul>
         </div>
         <div class="card reveal">
-          <h3>Langues</h3>
-          <div class="bar" style="--lvl: 100%"><span>Malagasy <em>langue maternelle</em></span><i></i></div>
-          <div class="bar" style="--lvl: 75%"><span>Français <em>DELF B2 · 91/100</em></span><i></i></div>
-          <div class="bar" style="--lvl: 55%"><span>English <em>B1 avec distinction</em></span><i></i></div>
+          <h3 data-i18n="skills.h2">Analyse &amp; stratégie</h3>
+          <ul class="chips" data-i18n="skills.l2"><li>Suivi de KPI</li><li>SWOT / FFOM</li><li>PESTEL</li><li>Ishikawa 5M</li><li>Matrice d'Eisenhower</li><li>Business Model Canvas</li><li>QQOQCCP</li><li>Marketing mix 7P</li><li>Prévisions financières</li></ul>
         </div>
+        <div class="card reveal">
+          <h3 data-i18n="skills.h3">Outils</h3>
+          <ul class="chips"><li>Microsoft Excel</li><li>Google Sheets</li><li>Jira</li><li>Microsoft Teams / Skype</li><li>Google Cloud Platform</li><li>Meta Business Suite</li><li>Canva</li><li>Adobe Photoshop</li><li>Adobe XD</li><li>Microsoft Office</li></ul>
+        </div>
+        <div class="card reveal">
+          <h3 data-i18n="skills.h4">Langues</h3>
+          <div class="bar" style="--lvl: 100%"><span>Malagasy <em data-i18n="lang.native">langue maternelle</em></span><i></i></div>
+          <div class="bar" style="--lvl: 80%"><span><span data-i18n="lang.fr">Français</span> <em>DELF B2 · 91/100</em></span><i></i></div>
+          <div class="bar" style="--lvl: 60%"><span><span data-i18n="lang.en">Anglais</span> <em data-i18n="lang.en.n">B1 avec distinction</em></span><i></i></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHOTOGRAPHY -->
+    <section id="photography" class="section">
+      <h2 class="section-title reveal"><span>06</span> <span data-i18n="photo.title">Photographie</span></h2>
+      <p class="section-intro reveal" data-i18n="photo.intro">Photographie produit et événementielle : bouquets, atelier créatif et sport.</p>
+      <div class="filters reveal" role="tablist">
+        <button class="filter active" data-f="all" data-i18n="photo.all">Tout</button>
+        <button class="filter" data-f="product" data-i18n="photo.product">Produits</button>
+        <button class="filter" data-f="event" data-i18n="photo.event">Événements</button>
+        <button class="filter" data-f="sport" data-i18n="photo.sport">Sport</button>
+      </div>
+      <div class="gallery">
+        <figure data-cat="product"><img src="img/img_3068.jpg" loading="lazy" alt="Bouquet de rose rouge et eucalyptus" /><figcaption data-i18n="cap.product">Produit · bouquets</figcaption></figure>
+        <figure data-cat="event"><img src="img/img_3722.jpg" loading="lazy" alt="Fleurs en pâte à modeler" /><figcaption data-i18n="cap.workshop">Atelier déco de miroirs</figcaption></figure>
+        <figure data-cat="product"><img src="img/img_2933.jpg" loading="lazy" alt="Bouquet de roses tenu en main" /><figcaption data-i18n="cap.product">Produit · bouquets</figcaption></figure>
+        <figure data-cat="sport"><img src="img/img_3455.jpg" loading="lazy" alt="Championnat de MMA" /><figcaption data-i18n="cap.mma">Championnat de MMA · médaille d'or de mon frère</figcaption></figure>
+        <figure data-cat="event"><img src="img/img_3646.jpg" loading="lazy" alt="Mains façonnant de la pâte à modeler" /><figcaption data-i18n="cap.workshop">Atelier déco de miroirs</figcaption></figure>
+        <figure data-cat="product"><img src="img/img_3165.jpg" loading="lazy" alt="Composition florale et cadeau" /><figcaption data-i18n="cap.product">Produit · bouquets</figcaption></figure>
+        <figure data-cat="event"><img src="img/img_3683.jpg" loading="lazy" alt="Participante décorant un miroir" /><figcaption data-i18n="cap.workshop">Atelier déco de miroirs</figcaption></figure>
+        <figure data-cat="product"><img src="img/img_3829.jpg" loading="lazy" alt="Bouquet de fleurs colorées" /><figcaption data-i18n="cap.product">Produit · bouquets</figcaption></figure>
+        <figure data-cat="event"><img src="img/img_3597.jpg" loading="lazy" alt="Atelier créatif" /><figcaption data-i18n="cap.workshop">Atelier déco de miroirs</figcaption></figure>
+        <figure data-cat="product"><img src="img/img_3043.jpg" loading="lazy" alt="Shooting bouquet en extérieur" /><figcaption data-i18n="cap.product">Produit · bouquets</figcaption></figure>
+        <figure data-cat="event"><img src="img/img_3667.jpg" loading="lazy" alt="Participante façonnant une fleur" /><figcaption data-i18n="cap.workshop">Atelier déco de miroirs</figcaption></figure>
+        <figure data-cat="product"><img src="img/img_3832.jpg" loading="lazy" alt="Bouquet de fleurs en extérieur" /><figcaption data-i18n="cap.product">Produit · bouquets</figcaption></figure>
       </div>
     </section>
 
     <!-- CERTIFICATES -->
     <section id="certificates" class="section">
-      <h2 class="section-title reveal"><span>05</span> Certificats & attestations</h2>
+      <h2 class="section-title reveal"><span>07</span> <span data-i18n="cert.title">Certificats &amp; attestations</span></h2>
       <div class="cert-grid">
-        <div class="cert reveal"><span>Déc. 2024</span><h3>General English Course (B1 with distinction)</h3><p>Madagascar Professional Training Centre</p></div>
-        <div class="cert reveal"><span>Mars 2024</span><h3>Principe de l'autorité & bases de la vie militaire</h3><p>Académie Militaire (ACMIL)</p></div>
-        <div class="cert reveal"><span>Déc. 2023</span><h3>Spoken English Certificate</h3><p>English School of Madagascar</p></div>
-        <div class="cert reveal"><span>Janv. 2023</span><h3>Participant ICEBI</h3><p>International Conference on Economic & Business Issues</p></div>
-        <div class="cert reveal"><span>Févr. 2022</span><h3>Les fondamentaux du marketing numérique</h3><p>Google Atelier Digital</p></div>
+        <div class="cert reveal"><span data-i18n="cert.1.d">Déc. 2024</span><h3>General English Course (B1 with distinction)</h3><p>Madagascar Professional Training Centre</p></div>
+        <div class="cert reveal"><span data-i18n="cert.2.d">Mars 2024</span><h3 data-i18n="cert.2.t">Principe de l'autorité &amp; bases de la vie militaire</h3><p>Académie Militaire (ACMIL)</p></div>
+        <div class="cert reveal"><span data-i18n="cert.3.d">Déc. 2023</span><h3>Spoken English Certificate</h3><p>English School of Madagascar</p></div>
+        <div class="cert reveal"><span data-i18n="cert.4.d">Janv. 2023</span><h3 data-i18n="cert.4.t">Participant ICEBI</h3><p>International Conference on Economic &amp; Business Issues</p></div>
+        <div class="cert reveal"><span data-i18n="cert.5.d">Févr. 2022</span><h3 data-i18n="cert.5.t">Les fondamentaux du marketing numérique</h3><p>Google Atelier Digital</p></div>
       </div>
     </section>
 
     <!-- CONTACT -->
     <section id="contact" class="section contact reveal">
-      <h2>Travaillons <span class="grad">ensemble</span>.</h2>
-      <p class="lead">Ouvert aux postes en marketing, communication et Business Analysis.</p>
+      <h2 data-i18n="contact.title">Travaillons <span class="grad">ensemble</span>.</h2>
+      <p class="lead" data-i18n="contact.lead">Ouvert aux stages et postes en Business Analysis, gestion de projet digital et marketing — à Maurice, à Madagascar ou à distance.</p>
+      <form class="contact-form" action="https://formsubmit.co/ajax/sp.randrianarijaona@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Nouveau message depuis le portfolio" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" />
+        <label><span data-i18n="form.name">Nom</span><input name="name" required autocomplete="name" /></label>
+        <label><span data-i18n="form.email">E-mail</span><input name="email" type="email" required autocomplete="email" /></label>
+        <label class="full"><span data-i18n="form.msg">Message</span><textarea name="message" rows="5" required></textarea></label>
+        <button class="btn btn-primary" type="submit" data-i18n="form.send">Envoyer le message</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
       <div class="contact-links">
-        <a href="mailto:sp.randrianarijaona@gmail.com" class="btn btn-primary">✉️ sp.randrianarijaona@gmail.com</a>
+        <a href="mailto:sp.randrianarijaona@gmail.com" class="btn btn-ghost">✉️ sp.randrianarijaona@gmail.com</a>
         <a href="https://linkedin.com/in/sitrakapaulrandrianarijaona" target="_blank" rel="noopener" class="btn btn-ghost">in · LinkedIn</a>
-        <a href="tel:+261349862293" class="btn btn-ghost">📞 +261 34 98 622 93</a>
+        <a href="https://wa.me/261349862293" target="_blank" rel="noopener" class="btn btn-ghost">💬 WhatsApp</a>
       </div>
     </section>
   </main>
 
+  <!-- Lightbox -->
+  <div class="lightbox" aria-hidden="true">
+    <button class="lb-close" aria-label="Fermer">✕</button>
+    <button class="lb-prev" aria-label="Précédent">‹</button>
+    <img alt="" />
+    <button class="lb-next" aria-label="Suivant">›</button>
+    <p class="lb-cap"></p>
+  </div>
+
   <footer>© <span id="year"></span> Sitraka Paul Randrianarijaona</footer>
+  <script src="i18n.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/SplitText.min.js"></script>
