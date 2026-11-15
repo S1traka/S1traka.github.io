@@ -700,6 +700,20 @@ html { transition: --accent 1.2s ease; }
 .kcol:last-child .kcard { border-left-color: #3ddc84; color: #3ddc84; }
 @media (max-width: 600px) { .kanban { grid-template-columns: 1fr; } }
 
+/* Project screenshots + architecture flow */
+.shots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; margin-top: 1.5rem; }
+.shots-note { grid-column: 1 / -1; font: 500 0.72rem ui-monospace, Consolas, monospace; letter-spacing: 0.06em; color: var(--muted) !important; }
+.shots-note::before { content: "🔒 "; }
+.shots a { display: flex; flex-direction: column; gap: 0.45rem; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--bg-2); transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; }
+.shots a:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 14px 30px -14px var(--accent); }
+.shots img { width: 100%; height: 120px; object-fit: cover; object-position: top left; display: block; }
+.shots span { font-size: 0.78rem; color: var(--muted); padding: 0 0.7rem 0.7rem; }
+@media (max-width: 900px) { .shots { grid-template-columns: repeat(2, 1fr); } }
+.flow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-top: 1.3rem; }
+.flow span { font-size: 0.85rem; padding: 0.5rem 0.8rem; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-2); }
+.flow b { font-weight: 600; }
+.flow i { font-style: normal; color: var(--accent); font-weight: 700; }
+
 /* Education & skills */
 .edu-grid { grid-template-columns: repeat(3, 1fr); }
 .edu-current { border-color: color-mix(in srgb, var(--accent) 50%, transparent); }
