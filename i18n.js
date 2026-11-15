@@ -75,7 +75,17 @@
     "p3.sub": "A Business Analyst's day-to-day on Google Cloud projects",
     "k.1": "Remove unused panel", "k.2": "User guide", "k.3": "Release testing", "k.4": "Release note", "k.5": "Client demo",
     "p3.r": "Bridging the client and the development team: reproducing and documenting defects, writing clear tickets, tracking them on the Kanban board, then validating fixes before demos.",
-    "p3.rit": "Daily scrum: what was done, what will be done, blockers. Team communication on Skype, then Microsoft Teams.",
+    "p3.shots": "Real project screenshots — client and supplier names hidden",
+    "shot.1": "Qualified bug ticket (Jira)", "shot.2": "Diagnosing an HTTP 500 error (dev tools)",
+    "shot.3": "Annotated defect on the supplier map", "shot.4": "Testing the map integration (layers)",
+    "p4.meta": "Personal project · 2026 · Self-hosted platform",
+    "p4.sub": "Family management platform: vehicle fleet, rental property and invoicing",
+    "f.1": "Mobile app", "f.2": "Login gateway", "f.3": "Web portal",
+    "case.need": "Need", "case.solution": "Solution", "case.highlights": "Highlights",
+    "p4.need": "Centralise family data that used to be scattered: vehicle trips and expenses, meter readings, rent and maintenance of a property, invoices.",
+    "p4.sol": "A personal server (homelab, Docker containers) combining a NocoDB database, a Dashy web portal, a login gateway with roles (Super-admin, Admin, Family, Guest…), a Flutter mobile app and an invoice generator.",
+    "p4.hl": "<li><strong>Offline</strong> mobile data entry, synced when the network returns</li><li><strong>Hashed</strong> passwords; the database token is never exposed to the browser</li><li>Credentials change enforced at first login</li><li>Monitoring (Grafana), reverse proxy and dynamic DNS</li>",
+    "p3.rit":"Daily scrum: what was done, what will be done, blockers. Team communication on Skype, then Microsoft Teams.",
 
     "edu.title": "Education",
     "edu.0.date": "Since Oct 2026 · in progress", "edu.0.t": "MBA (General)",
@@ -88,7 +98,7 @@
     "skills.h2": "Analysis &amp; strategy",
     "skills.l2": "<li>KPI tracking</li><li>SWOT</li><li>PESTEL</li><li>Ishikawa 5M</li><li>Eisenhower matrix</li><li>Business Model Canvas</li><li>5W2H</li><li>7P marketing mix</li><li>Financial forecasts</li>",
     "skills.h3": "Tools", "skills.h4": "Languages",
-    "lang.native": "native", "lang.fr": "French", "lang.en": "English", "lang.en.n": "B1 with distinction",
+    "lang.native": "native", "lang.fr": "French", "lang.en": "English", "lang.en.n": "C2 · MPTC, Dec 2025",
 
     "photo.title": "Photography",
     "photo.intro": "Product and event photography: bouquets, a creative workshop and sport.",
@@ -97,7 +107,7 @@
     "cap.mma": "MMA championship · my brother's gold medal",
 
     "cert.title": "Certificates",
-    "cert.1.d": "Dec 2024", "cert.2.d": "Mar 2024", "cert.3.d": "Dec 2023", "cert.4.d": "Jan 2023", "cert.5.d": "Feb 2022",
+    "cert.0.d": "Dec 2025", "cert.1.d": "Dec 2024", "cert.2.d": "Mar 2024", "cert.3.d": "Dec 2023", "cert.4.d": "Jan 2023", "cert.5.d": "Feb 2022",
     "cert.2.t": "Principles of authority &amp; basics of military life",
     "cert.4.t": "ICEBI participant", "cert.5.t": "Digital marketing fundamentals",
 
