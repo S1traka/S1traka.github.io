@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sitraka Paul Randrianarijaona — Marketing & Business Analyst</title>
+  <meta name="description" content="Portfolio de Sitraka Paul Randrianarijaona, diplômé d'un Master en Marketing, expérience en marketing digital et Business Analysis." />
+  <script>
+    // FX are ON by default; visitors can switch them off with the FX toggle (remembered)
+    if (localStorage.getItem("motion") === "off") document.documentElement.classList.add("reduce-motion");
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Boot loader -->
+  <div class="loader" aria-hidden="true">
+    <div class="loader-inner">
+      <p class="loader-line">&gt; compilation des données du profil<span class="dots"></span></p>
+      <p class="loader-dna">0101</p>
+      <div class="loader-bar"><i></i></div>
+      <p class="loader-pct">0%</p>
+    </div>
+  </div>
+
+  <canvas id="network" aria-hidden="true"></canvas>
+  <canvas id="helix" aria-hidden="true"></canvas>
+  <nav class="dna-nav" aria-label="Séquences">
+    <canvas class="dna-nav-canvas" aria-hidden="true"></canvas>
+  </nav>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a href="#top" class="logo">SP<span>.</span></a>
+    <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+    <nav class="nav-links">
+      <a href="#about">À propos</a>
+      <a href="#experience">Expérience</a>
+      <a href="#education">Formation</a>
+      <a href="#skills">Compétences</a>
+      <a href="#certificates">Certificats</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+      <button class="fx-toggle" type="button" aria-pressed="true" title="Activer / désactiver les animations">FX <b>ON</b></button>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-text reveal">
+        <p class="eyebrow">Disponible pour de nouvelles opportunités</p>
+        <h1><span class="glitch" data-text="Sitraka Paul">Sitraka Paul</span><br /><span class="grad">Randrianarijaona</span></h1>
+        <p class="role"><span class="prompt">&gt;_</span> <span id="scramble">Marketing digital</span><span class="caret"></span></p>
+        <p class="lead">
+          Jeune diplômé d'un Master en Marketing, avec une expérience pratique en marketing
+          numérique et en Business Analysis. Compétent dans la création de contenu et
+          l'optimisation des performances.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Me contacter</a>
+          <a href="cv.pdf" class="btn btn-ghost" download>Télécharger le CV</a>
+        </div>
+      </div>
+      <div class="hero-photo reveal">
+        <div class="photo-ring">
+          <span class="orbit" aria-hidden="true"></span>
+          <!-- Placez votre photo dans le dossier sous le nom "photo.jpg" -->
+          <img src="photo.jpg" alt="Portrait de Sitraka Paul Randrianarijaona"
+               onerror="this.remove()" />
+          <span class="initials">SP</span>
+        </div>
+        <div class="badge">📍 Antananarivo, Madagascar</div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats reveal">
+      <div><strong class="counter" data-target="1915" data-prefix="+">+1 915</strong><span>abonnés gagnés en moyenne par page</span></div>
+      <div><strong class="counter" data-target="780" data-prefix="+">+780</strong><span>mentions « j'aime » en moyenne par page</span></div>
+      <div><strong class="counter" data-target="11">11</strong><span>pages réseaux sociaux gérées</span></div>
+      <div><strong class="counter" data-target="4">4</strong><span>projets Google Cloud suivis</span></div>
+    </section>
+
+    <!-- MARQUEE (moves with scroll speed & direction) -->
+    <section class="marquee" aria-hidden="true">
+      <div class="marquee-row" data-dir="1">
+        <div class="marquee-track">
+          <span>Marketing digital</span><b>✦</b><span>Business Analysis</span><b>✦</b><span>Création de contenu</span><b>✦</b><span>Community management</span><b>✦</b><span>Google Cloud</span><b>✦</b><span>Études de marché</span><b>✦</b>
+        </div>
+      </div>
+      <div class="marquee-row outline" data-dir="-1">
+        <div class="marquee-track">
+          <span>Innovation</span><b>✦</b><span>Engagement</span><b>✦</b><span>Stratégie</span><b>✦</b><span>Performance</span><b>✦</b><span>Communication</span><b>✦</b><span>Analyse</span><b>✦</b>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <h2 class="section-title reveal"><span>01</span> À propos</h2>
+      <div class="about-grid">
+        <div class="card reveal">
+          <h3>Mes objectifs</h3>
+          <p>Acquérir une expérience pratique dans divers postes, tout en apportant une contribution
+            significative au succès de l'équipe.</p>
+          <p>Utiliser mes connaissances et mes expériences pour promouvoir l'efficacité et
+            l'innovation au sein de l'entreprise.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Centres d'intérêt</h3>
+          <ul class="tags">
+            <li>🏀 Basketball</li>
+            <li>📷 Photographie</li>
+            <li>🎵 Musique</li>
+          </ul>
+          <p class="muted">Motivé à apprendre et à contribuer au succès d'une équipe dynamique.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section">
+      <h2 class="section-title reveal"><span>02</span> Expérience professionnelle</h2>
+      <ol class="timeline">
+        <li class="reveal">
+          <div class="tl-date">Juil. 2023 — Nov. 2023</div>
+          <div class="tl-body card">
+            <h3>Stagiaire Business Analyst</h3>
+            <p class="company">eTECH Consulting</p>
+            <ul>
+              <li>Gestion de 4 projets Google Cloud Platform</li>
+              <li>Rédaction de 3 notes de version</li>
+              <li>Mise à jour et finalisation du guide utilisateur d'un projet</li>
+              <li>Animation de 3 démonstrations de versions d'application</li>
+            </ul>
+          </div>
+        </li>
+        <li class="reveal">
+          <div class="tl-date">Janv. 2022 — Mars 2022</div>
+          <div class="tl-body card">
+            <h3>Stagiaire Marketing</h3>
+            <p class="company">WAKA (Groupe Metropole)</p>
+            <ul>
+              <li>Conception du calendrier éditorial du groupe pour une année</li>
+              <li>Gestion des contenus de 9 pages Instagram & Facebook, 1 page LinkedIn et un site web</li>
+              <li>Hausse moyenne de 780 mentions « j'aime » et de 1 915 abonnés par page</li>
+              <li>Amélioration du taux d'engagement</li>
+            </ul>
+          </div>
+        </li>
+        <li class="reveal">
+          <div class="tl-date">Juil. 2021 — Août 2021</div>
+          <div class="tl-body card">
+            <h3>Enquêteur terrain</h3>
+            <p class="company">UCODIS Tsaralalana</p>
+            <ul>
+              <li>Enquêtes clients pour collecter des données influençant les stratégies marketing</li>
+              <li>Enquêtes téléphoniques auprès des revendeurs pour améliorer la distribution</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section">
+      <h2 class="section-title reveal"><span>03</span> Formation</h2>
+      <div class="edu-grid">
+        <article class="card reveal">
+          <p class="tl-date">2022 — 2024</p>
+          <h3>Master en Marketing Management Innovation</h3>
+          <p class="company">ISCAM Business School, Ankadifotsy</p>
+        </article>
+        <article class="card reveal">
+          <p class="tl-date">2019 — 2022</p>
+          <h3>Licence en Marketing Communication</h3>
+          <p class="company">ISCAM Business School, Ankadifotsy</p>
+        </article>
+        <article class="card reveal">
+          <p class="tl-date">2019</p>
+          <h3>Baccalauréat, Série A2</h3>
+          <p class="company">Collège Saint Michel Amparibe, Antananarivo</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <h2 class="section-title reveal"><span>04</span> Compétences & langues</h2>
+      <div class="about-grid">
+        <div class="card reveal">
+          <h3>Outils</h3>
+          <div class="bar" style="--lvl: 75%"><span>Microsoft Office</span><i></i></div>
+          <div class="bar" style="--lvl: 50%"><span>Adobe Photoshop</span><i></i></div>
+          <div class="bar" style="--lvl: 75%"><span>Canva</span><i></i></div>
+          <ul class="tags">
+            <li>Marketing digital</li><li>Création de contenu</li><li>Community management</li>
+            <li>Calendrier éditorial</li><li>Business Analysis</li><li>Documentation produit</li>
+            <li>Études de marché</li>
+          </ul>
+        </div>
+        <div class="card reveal">
+          <h3>Langues</h3>
+          <div class="bar" style="--lvl: 100%"><span>Malagasy <em>langue maternelle</em></span><i></i></div>
+          <div class="bar" style="--lvl: 75%"><span>Français <em>DELF B2 · 91/100</em></span><i></i></div>
+          <div class="bar" style="--lvl: 55%"><span>English <em>B1 avec distinction</em></span><i></i></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATES -->
+    <section id="certificates" class="section">
+      <h2 class="section-title reveal"><span>05</span> Certificats & attestations</h2>
+      <div class="cert-grid">
+        <div class="cert reveal"><span>Déc. 2024</span><h3>General English Course (B1 with distinction)</h3><p>Madagascar Professional Training Centre</p></div>
+        <div class="cert reveal"><span>Mars 2024</span><h3>Principe de l'autorité & bases de la vie militaire</h3><p>Académie Militaire (ACMIL)</p></div>
+        <div class="cert reveal"><span>Déc. 2023</span><h3>Spoken English Certificate</h3><p>English School of Madagascar</p></div>
+        <div class="cert reveal"><span>Janv. 2023</span><h3>Participant ICEBI</h3><p>International Conference on Economic & Business Issues</p></div>
+        <div class="cert reveal"><span>Févr. 2022</span><h3>Les fondamentaux du marketing numérique</h3><p>Google Atelier Digital</p></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact reveal">
+      <h2>Travaillons <span class="grad">ensemble</span>.</h2>
+      <p class="lead">Ouvert aux postes en marketing, communication et Business Analysis.</p>
+      <div class="contact-links">
+        <a href="mailto:sp.randrianarijaona@gmail.com" class="btn btn-primary">✉️ sp.randrianarijaona@gmail.com</a>
+        <a href="https://linkedin.com/in/sitrakapaulrandrianarijaona" target="_blank" rel="noopener" class="btn btn-ghost">in · LinkedIn</a>
+        <a href="tel:+261349862293" class="btn btn-ghost">📞 +261 34 98 622 93</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>© <span id="year"></span> Sitraka Paul Randrianarijaona</footer>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/SplitText.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+  <script src="script.js"></script>
+  <script src="dna.js"></script>
+</body>
+</html>
