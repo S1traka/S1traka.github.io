@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.css" />
-  <link rel="stylesheet" href="style.css?v=2611152009" />
+  <link rel="stylesheet" href="style.css?v=2611152100" />
 </head>
 <body>
   <!-- Boot loader -->
@@ -265,7 +265,41 @@
             <div><h4 data-i18n="case.role">Mon rôle</h4><p data-i18n="p3.r">Faire le lien entre le client et l'équipe de développement : reproduire et documenter les anomalies, rédiger des tickets clairs, suivre leur avancement sur le tableau Kanban, puis valider les corrections avant les démonstrations.</p></div>
             <div><h4 data-i18n="case.rituals">Rituels</h4><p data-i18n="p3.rit">Daily scrum : ce qui a été fait, ce qui sera fait, les blocages. Communication d'équipe sur Skype puis Microsoft Teams.</p></div>
           </div>
+          <div class="shots">
+            <p class="shots-note" data-i18n="p3.shots">Captures réelles du projet — noms du client et des fournisseurs masqués</p>
+            <a href="img/etech-jira-bug.png" target="_blank" rel="noopener"><img src="img/etech-jira-bug.png" loading="lazy" alt="Ticket de bug Jira" /><span data-i18n="shot.1">Ticket de bug qualifié (Jira)</span></a>
+            <a href="img/etech-network-500.png" target="_blank" rel="noopener"><img src="img/etech-network-500.png" loading="lazy" alt="Analyse réseau montrant une erreur 500" /><span data-i18n="shot.2">Diagnostic d'une erreur 500 (outils développeur)</span></a>
+            <a href="img/etech-map-risk.png" target="_blank" rel="noopener"><img src="img/etech-map-risk.png" loading="lazy" alt="Carte des fournisseurs annotée" /><span data-i18n="shot.3">Anomalie annotée sur la carte des fournisseurs</span></a>
+            <a href="img/etech-map-layers.png" target="_blank" rel="noopener"><img src="img/etech-map-layers.png" loading="lazy" alt="Carte avec calques" /><span data-i18n="shot.4">Recette de l'intégration cartographique (calques)</span></a>
+          </div>
           <ul class="chips"><li>Jira</li><li>Kanban</li><li>Daily Scrum</li><li data-i18n="chip.bug">Qualification de bugs</li><li>Release notes</li></ul>
+        </article>
+
+        <article class="project card reveal">
+          <div class="project-head">
+            <p class="project-meta" data-i18n="p4.meta">Projet personnel · 2026 · Plateforme auto-hébergée</p>
+            <h3>Akany Maitso</h3>
+            <p class="project-sub" data-i18n="p4.sub">Plateforme de gestion familiale : flotte de véhicules, bien immobilier et facturation</p>
+          </div>
+          <div class="flow" aria-hidden="true">
+            <span>📱 <b data-i18n="f.1">App mobile</b></span><i>→</i>
+            <span>🔐 <b data-i18n="f.2">Passerelle de connexion</b></span><i>→</i>
+            <span>🗄️ <b>NocoDB</b></span><i>←</i>
+            <span>🖥️ <b data-i18n="f.3">Portail web</b></span>
+          </div>
+          <div class="case">
+            <div><h4 data-i18n="case.need">Besoin</h4><p data-i18n="p4.need">Centraliser des données familiales jusque-là dispersées : trajets et dépenses des véhicules, relevés de compteurs, loyers et entretien d'un bien immobilier, factures.</p></div>
+            <div><h4 data-i18n="case.solution">Solution</h4><p data-i18n="p4.sol">Un serveur personnel (homelab, conteneurs Docker) qui réunit une base de données NocoDB, un portail web Dashy, une passerelle de connexion avec rôles (Super-admin, Admin, Famille, Invité…), une application mobile Flutter et un générateur de factures.</p></div>
+            <div><h4 data-i18n="case.highlights">Points clés</h4>
+              <ul class="deliverables" data-i18n="p4.hl">
+                <li>Saisie mobile <strong>hors ligne</strong>, synchronisée au retour du réseau</li>
+                <li>Mots de passe <strong>hachés</strong>, jeton de la base jamais exposé au navigateur</li>
+                <li>Changement d'identifiants imposé à la première connexion</li>
+                <li>Suivi et supervision (Grafana), reverse proxy et DNS dynamique</li>
+              </ul>
+            </div>
+          </div>
+          <ul class="chips"><li>NocoDB</li><li>Dashy</li><li>Docker</li><li>Flutter</li><li>Node.js</li><li>Python</li><li>Grafana</li><li>Nginx Proxy Manager</li></ul>
         </article>
 
       </div>
@@ -315,7 +349,7 @@
           <h3 data-i18n="skills.h4">Langues</h3>
           <div class="bar" style="--lvl: 100%"><span>Malagasy <em data-i18n="lang.native">langue maternelle</em></span><i></i></div>
           <div class="bar" style="--lvl: 80%"><span><span data-i18n="lang.fr">Français</span> <em>DELF B2 · 91/100</em></span><i></i></div>
-          <div class="bar" style="--lvl: 60%"><span><span data-i18n="lang.en">Anglais</span> <em data-i18n="lang.en.n">B1 avec distinction</em></span><i></i></div>
+          <div class="bar" style="--lvl: 95%"><span><span data-i18n="lang.en">Anglais</span> <em data-i18n="lang.en.n">C2 · MPTC, déc. 2025</em></span><i></i></div>
         </div>
       </div>
     </section>
@@ -350,6 +384,7 @@
     <section id="certificates" class="section">
       <h2 class="section-title reveal"><span>07</span> <span data-i18n="cert.title">Certificats &amp; attestations</span></h2>
       <div class="cert-grid">
+        <div class="cert reveal"><span data-i18n="cert.0.d">Déc. 2025</span><h3>General English Course — C2</h3><p>Madagascar Professional Training Centre</p></div>
         <div class="cert reveal"><span data-i18n="cert.1.d">Déc. 2024</span><h3>General English Course (B1 with distinction)</h3><p>Madagascar Professional Training Centre</p></div>
         <div class="cert reveal"><span data-i18n="cert.2.d">Mars 2024</span><h3 data-i18n="cert.2.t">Principe de l'autorité &amp; bases de la vie militaire</h3><p>Académie Militaire (ACMIL)</p></div>
         <div class="cert reveal"><span data-i18n="cert.3.d">Déc. 2023</span><h3>Spoken English Certificate</h3><p>English School of Madagascar</p></div>
@@ -390,12 +425,12 @@
   </div>
 
   <footer>© <span id="year"></span> Sitraka Paul Randrianarijaona</footer>
-  <script src="i18n.js?v=2611152009"></script>
+  <script src="i18n.js?v=2611152100"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/SplitText.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
-  <script src="script.js?v=2611152009"></script>
-  <script src="dna.js?v=2611152009"></script>
+  <script src="script.js?v=2611152100"></script>
+  <script src="dna.js?v=2611152100"></script>
 </body>
 </html>
