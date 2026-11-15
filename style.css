@@ -567,4 +567,4 @@ html { transition: --accent 1.2s ease; }
 .hero-hud b { color: var(--accent); font-weight: 500; }
 .hero-hud.tl { top: 6.5rem; left: 0; }
 .hero-hud.br { bottom: 2rem; right: 0; text-align: right; }
-@media (max-width: 900px) { .hero-hud { display: none; } }
+@media (max-width: 900px), (max-height: 820px) { .hero-hud { display: none; } }
