@@ -268,7 +268,7 @@
 
     ctx.clearRect(0, 0, W, H);
     ctx.save();
-    ctx.globalAlpha = mobile ? 0.28 : 0.55;
+    ctx.globalAlpha = mobile ? 0.18 : 0.38;
     ctx.translate(W / 2, H / 2);
     ctx.rotate(-0.12 + mouse.sx * 0.05);
     ctx.translate(-W / 2 - W * 0.1, -H / 2 + mouse.sy * 20 * DPR);
