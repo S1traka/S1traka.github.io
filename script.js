@@ -71,6 +71,100 @@ function runCounter(el) {
 }
 
 /* =========================================================
+   Contact form (FormSubmit, no backend needed)
+   ========================================================= */
+(() => {
+  const form = document.querySelector(".contact-form");
+  if (!form) return;
+  const status = form.querySelector(".form-status");
+  const T = window.LANG === "en"
+    ? { sending: "Sending…", ok: "✓ Message sent — thank you! I'll get back to you soon.", err: "Sending failed. Please email me directly." }
+    : { sending: "Envoi en cours…", ok: "✓ Message envoyé — merci ! Je vous réponds rapidement.", err: "Échec de l'envoi. Écrivez-moi directement par e-mail." };
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector("button[type=submit]");
+    btn.disabled = true;
+    status.textContent = T.sending;
+    status.className = "form-status";
+    try {
+      const res = await fetch(form.action, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(form),
+      });
+      if (!res.ok) throw new Error(res.status);
+      status.textContent = T.ok;
+      status.classList.add("ok");
+      form.reset();
+    } catch {
+      status.textContent = T.err;
+      status.classList.add("err");
+    } finally {
+      btn.disabled = false;
+    }
+  });
+})();
+
+/* =========================================================
+   Gallery: filters + lightbox
+   ========================================================= */
+(() => {
+  const figs = [...document.querySelectorAll(".gallery figure")];
+  if (!figs.length) return;
+  document.querySelectorAll(".filter").forEach((b) =>
+    b.addEventListener("click", () => {
+      document.querySelectorAll(".filter").forEach((x) => x.classList.toggle("active", x === b));
+      figs.forEach((f) => {
+        const show = b.dataset.f === "all" || f.dataset.cat === b.dataset.f;
+        f.classList.toggle("hidden", !show);
+      });
+      if (window.ScrollTrigger) setTimeout(() => ScrollTrigger.refresh(), 450);
+    })
+  );
+
+  const lb = document.querySelector(".lightbox");
+  const lbImg = lb.querySelector("img");
+  const lbCap = lb.querySelector(".lb-cap");
+  let idx = 0;
+  const visible = () => figs.filter((f) => !f.classList.contains("hidden"));
+  const open = (f) => {
+    const list = visible();
+    idx = list.indexOf(f);
+    show();
+    lb.classList.add("open");
+    lb.setAttribute("aria-hidden", "false");
+    window.lenis && window.lenis.stop();
+  };
+  const show = () => {
+    const f = visible()[idx];
+    lbImg.src = f.querySelector("img").src;
+    lbImg.alt = f.querySelector("img").alt;
+    lbCap.textContent = f.querySelector("figcaption").textContent;
+  };
+  const close = () => {
+    lb.classList.remove("open");
+    lb.setAttribute("aria-hidden", "true");
+    window.lenis && window.lenis.start();
+  };
+  const step = (d) => { const n = visible().length; idx = (idx + d + n) % n; show(); };
+  figs.forEach((f) => {
+    f.tabIndex = 0;
+    f.addEventListener("click", () => open(f));
+    f.addEventListener("keydown", (e) => e.key === "Enter" && open(f));
+  });
+  lb.querySelector(".lb-close").addEventListener("click", close);
+  lb.querySelector(".lb-prev").addEventListener("click", () => step(-1));
+  lb.querySelector(".lb-next").addEventListener("click", () => step(1));
+  lb.addEventListener("click", (e) => e.target === lb && close());
+  addEventListener("keydown", (e) => {
+    if (!lb.classList.contains("open")) return;
+    if (e.key === "Escape") close();
+    if (e.key === "ArrowLeft") step(-1);
+    if (e.key === "ArrowRight") step(1);
+  });
+})();
+
+/* =========================================================
    Active nav link + scroll progress (work with or without GSAP)
    ========================================================= */
 const navLinks = [...document.querySelectorAll(".nav-links a")];
@@ -96,7 +190,9 @@ addEventListener("scroll", updateProgress, { passive: true });
 function startScramble() {
   const el = document.getElementById("scramble");
   if (reduceMotion) return;
-  const phrases = ["Marketing digital", "Business Analyst", "Création de contenu", "Community management", "Professionnel polyvalent"];
+  const phrases = window.LANG === "en"
+    ? ["Business Analyst", "Digital project management", "Digital marketing", "MBA student · UTM", "Scrum · Jira · Kanban"]
+    : ["Business Analyst", "Gestion de projet digital", "Marketing digital", "Étudiant MBA · UTM", "Scrum · Jira · Kanban"];
   const chars = "!<>-_\\/[]{}—=+*^?#01";
   let i = 0;
   const scrambleTo = (text) => new Promise((resolve) => {
