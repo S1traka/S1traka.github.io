@@ -104,7 +104,7 @@ h1 { font-size: clamp(2.6rem, 6.5vw, 4.8rem); letter-spacing: -0.02em; margin-bo
 .photo-ring img, .photo-ring .initials {
   width: 100%; height: 100%; border-radius: 50%; object-fit: cover; grid-area: 1 / 1;
 }
-.photo-ring img { position: relative; z-index: 1; }
+.photo-ring img { position: relative; z-index: 1; object-position: 50% 30%; }
 .photo-ring .initials {
   background: var(--bg-2); display: grid; place-items: center;
   font: 700 5rem "Space Grotesk", sans-serif; color: var(--muted);
@@ -118,7 +118,16 @@ h1 { font-size: clamp(2.6rem, 6.5vw, 4.8rem); letter-spacing: -0.02em; margin-bo
 }
 .stats div { background: var(--bg-2); padding: 1.75rem 1.5rem; }
 .stats strong { display: block; font: 700 2rem "Space Grotesk", sans-serif; }
-.stats span { color: var(--muted); font-size: 0.88rem; }
+.stats span { color: var(--muted); font-size: 0.88rem; display: block; }
+.stats small {
+  display: block; margin-top: 0.8rem; padding-top: 0.6rem; border-top: 1px dashed var(--border);
+  font: 500 0.7rem ui-monospace, Consolas, monospace; letter-spacing: 0.04em; color: var(--accent);
+}
+.stats-caption {
+  font: 500 0.75rem ui-monospace, Consolas, monospace; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); margin: 2rem 0 1rem;
+}
+.stats-caption::before { content: "// "; color: var(--accent); }
 
 /* CARDS */
 .card {
