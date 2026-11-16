@@ -14,13 +14,22 @@
   <script>
     // FX are ON by default; visitors can switch them off (remembered)
     if (localStorage.getItem("motion") === "off") document.documentElement.classList.add("reduce-motion");
+    // Performance tier: "lite" on touch / small / low-power devices (same look, cheaper effects)
+    (function () {
+      var n = navigator, c = n.connection || {};
+      var lite = matchMedia("(pointer: coarse)").matches || innerWidth < 900 ||
+        (n.hardwareConcurrency && n.hardwareConcurrency <= 4) || (n.deviceMemory && n.deviceMemory <= 4) ||
+        c.saveData || sessionStorage.getItem("lite") === "1";
+      window.PERF = { lite: !!lite, fps: lite ? 30 : 60 };
+      if (lite) document.documentElement.classList.add("lite");
+    })();
   </script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0b10'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-weight='700' font-size='30' fill='%234f7cff'%3ESP%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.css" />
-  <link rel="stylesheet" href="style.css?v=2611152100" />
+  <link rel="stylesheet" href="style.css?v=2611161000" />
 </head>
 <body>
   <!-- Boot loader -->
@@ -219,7 +228,6 @@
                 <li>Maquette de l'application (Adobe XD)</li>
                 <li>Matrice de droits utilisateurs (ci-dessous)</li>
                 <li>Compte de résultat, seuil de rentabilité, bilan, plan de financement, budget de trésorerie</li>
-                <li>Prototype interactif (Google AI Studio, 2026) : suivi en temps réel, bénévolat communautaire, signalement hors ligne</li>
               </ul>
             </div>
           </div>
@@ -233,7 +241,10 @@
               </div>
             </div>
           </details>
-          <ul class="chips"><li>Business Model Canvas</li><li>SWOT · PESTEL</li><li>7P</li><li data-i18n="chip.fin">Prévisions financières</li><li>Adobe XD</li><li>Google AI Studio</li></ul>
+          <div class="shots shots-one">
+            <a href="img/vonjymaika-map.png" target="_blank" rel="noopener"><img src="img/vonjymaika-map.png" loading="lazy" width="412" height="796" alt="Maquette VonjyMaika : carte des évènements" /><span data-i18n="shot.vm">Maquette Adobe XD : carte des évènements (profil Visiteur)</span></a>
+          </div>
+          <ul class="chips"><li>Business Model Canvas</li><li>SWOT · PESTEL</li><li>7P</li><li data-i18n="chip.fin">Prévisions financières</li><li>Adobe XD</li></ul>
         </article>
 
         <article class="project card reveal">
@@ -290,6 +301,7 @@
           <div class="case">
             <div><h4 data-i18n="case.need">Besoin</h4><p data-i18n="p4.need">Centraliser des données familiales jusque-là dispersées : trajets et dépenses des véhicules, relevés de compteurs, loyers et entretien d'un bien immobilier, factures.</p></div>
             <div><h4 data-i18n="case.solution">Solution</h4><p data-i18n="p4.sol">Un serveur personnel (homelab, conteneurs Docker) qui réunit une base de données NocoDB, un portail web Dashy, une passerelle de connexion avec rôles (Super-admin, Admin, Famille, Invité…), une application mobile Flutter et un générateur de factures.</p></div>
+            <div><h4 data-i18n="case.role">Mon rôle</h4><p data-i18n="p4.role">Conception et mise en place de bout en bout : migration d'un ancien PC Windows vers Ubuntu Linux, installation de CasaOS, Nextcloud, NocoDB et Dashy, modélisation des données et des règles d'accès. Le code a été développé par des agents IA à partir de mes spécifications : je définis le besoin, je pilote et je valide.</p></div>
             <div><h4 data-i18n="case.highlights">Points clés</h4>
               <ul class="deliverables" data-i18n="p4.hl">
                 <li>Saisie mobile <strong>hors ligne</strong>, synchronisée au retour du réseau</li>
@@ -299,7 +311,10 @@
               </ul>
             </div>
           </div>
-          <ul class="chips"><li>NocoDB</li><li>Dashy</li><li>Docker</li><li>Flutter</li><li>Node.js</li><li>Python</li><li>Grafana</li><li>Nginx Proxy Manager</li></ul>
+          <div class="shots shots-one">
+            <a href="img/akany-login.png" target="_blank" rel="noopener"><img src="img/akany-login.png" loading="lazy" width="1038" height="650" alt="Page de connexion Akany Maitso" /><span data-i18n="shot.am">Portail sécurisé : page de connexion</span></a>
+          </div>
+          <ul class="chips"><li>Ubuntu</li><li>CasaOS</li><li>Nextcloud</li><li>NocoDB</li><li>Dashy</li><li>Docker</li><li>Flutter</li><li>Node.js</li><li>Python</li><li>Grafana</li><li>Nginx Proxy Manager</li></ul>
         </article>
 
       </div>
@@ -389,7 +404,7 @@
         <div class="cert reveal"><span data-i18n="cert.2.d">Mars 2024</span><h3 data-i18n="cert.2.t">Principe de l'autorité &amp; bases de la vie militaire</h3><p>Académie Militaire (ACMIL)</p></div>
         <div class="cert reveal"><span data-i18n="cert.3.d">Déc. 2023</span><h3>Spoken English Certificate</h3><p>English School of Madagascar</p></div>
         <div class="cert reveal"><span data-i18n="cert.4.d">Janv. 2023</span><h3 data-i18n="cert.4.t">Participant ICEBI</h3><p>International Conference on Economic &amp; Business Issues</p></div>
-        <div class="cert reveal"><span data-i18n="cert.5.d">Févr. 2022</span><h3 data-i18n="cert.5.t">Les fondamentaux du marketing numérique</h3><p>Google Atelier Digital</p></div>
+        <div class="cert reveal"><span data-i18n="cert.5.d">Févr. 2022</span><h3 data-i18n="cert.5.t">Les fondamentaux du marketing numérique</h3><p>Google Atelier Digital · <a class="verify" href="https://learndigital.withgoogle.com/link/1qh2gjrod8g" target="_blank" rel="noopener" data-i18n="cert.verify">vérifier ↗</a></p></div>
       </div>
     </section>
 
@@ -424,13 +439,13 @@
     <p class="lb-cap"></p>
   </div>
 
-  <footer>© <span id="year"></span> Sitraka Paul Randrianarijaona</footer>
-  <script src="i18n.js?v=2611152100"></script>
+  <footer>© <span id="year"></span> Sitraka Paul Randrianarijaona · <span data-i18n="footer.ai">Conçu par moi, développé avec des agents IA</span></footer>
+  <script src="i18n.js?v=2611161000"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/SplitText.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
-  <script src="script.js?v=2611152100"></script>
-  <script src="dna.js?v=2611152100"></script>
+  <script src="script.js?v=2611161000"></script>
+  <script src="dna.js?v=2611161000"></script>
 </body>
 </html>
