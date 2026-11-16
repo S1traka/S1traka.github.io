@@ -22,20 +22,21 @@ function goLite() {
   dispatchEvent(new Event("perf-lite"));
 }
 if (!reduceMotion && !PERF.lite) {
-  addEventListener("load", () => {
+  // start after loading + intro are over (they are naturally janky), then watch 12 s
+  addEventListener("load", () => setTimeout(() => {
     const t0 = performance.now();
     let frames = 0, start = t0, slow = 0;
     (function sample(now) {
       if (document.hidden) return;
       frames++;
       if (now - start >= 1000) {
-        if (frames < 45) slow++; else slow = 0;
-        if (slow >= 2) return goLite();          // 2 slow seconds in a row
+        if (frames < 40) slow++; else slow = 0;
+        if (slow >= 3) return goLite();          // 3 slow seconds in a row
         frames = 0; start = now;
       }
-      if (now - t0 < 10000) requestAnimationFrame(sample); // watch for 10 s
+      if (now - t0 < 12000) requestAnimationFrame(sample);
     })(t0);
-  });
+  }, 3500));
 }
 const hasGSAP = !!(window.gsap && window.ScrollTrigger) && !reduceMotion;
 
