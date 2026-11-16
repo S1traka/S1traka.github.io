@@ -126,4 +126,5 @@
     if (v !== undefined) el.innerHTML = v;
   });
   document.title = "Sitraka Paul Randrianarijaona — Business Analyst & Digital Project Management";
+  document.querySelectorAll('a[href^="cv.pdf"]').forEach((a) => { a.href = "cv-en.pdf?v=2611161400"; a.download = "CV_Sitraka_RANDRIANARIJAONA_EN.pdf"; });
 })();
