@@ -10,6 +10,33 @@ document.querySelectorAll(".fx-toggle").forEach((b) => {
   });
 });
 const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+const PERF = window.PERF || (window.PERF = { lite: false, fps: 60 });
+
+/* FPS watchdog: if the device can't keep up during the first seconds,
+   switch to the lite tier for the rest of the visit (no reload). */
+function goLite() {
+  if (PERF.lite) return;
+  PERF.lite = true; PERF.fps = 30;
+  document.documentElement.classList.add("lite");
+  sessionStorage.setItem("lite", "1");
+  dispatchEvent(new Event("perf-lite"));
+}
+if (!reduceMotion && !PERF.lite) {
+  addEventListener("load", () => {
+    const t0 = performance.now();
+    let frames = 0, start = t0, slow = 0;
+    (function sample(now) {
+      if (document.hidden) return;
+      frames++;
+      if (now - start >= 1000) {
+        if (frames < 45) slow++; else slow = 0;
+        if (slow >= 2) return goLite();          // 2 slow seconds in a row
+        frames = 0; start = now;
+      }
+      if (now - t0 < 10000) requestAnimationFrame(sample); // watch for 10 s
+    })(t0);
+  });
+}
 const hasGSAP = !!(window.gsap && window.ScrollTrigger) && !reduceMotion;
 
 document.getElementById("year").textContent = new Date().getFullYear();
@@ -244,13 +271,17 @@ if (!reduceMotion) {
   const mouse = { x: -9999, y: -9999 };
   let w, h, dpr, nodes = [], scrollShift = 0, lastScroll = scrollY;
 
+  let lastW = 0;
   function resize() {
-    dpr = Math.min(devicePixelRatio || 1, 2);
+    // mobile browsers fire resize when the address bar hides: ignore height-only changes
+    if (lastW === innerWidth && nodes.length && !resize.force) return;
+    resize.force = false; lastW = innerWidth;
+    dpr = PERF.lite ? 1 : Math.min(devicePixelRatio || 1, 1.5);
     w = canvas.width = innerWidth * dpr;
     h = canvas.height = innerHeight * dpr;
     canvas.style.width = innerWidth + "px";
     canvas.style.height = innerHeight + "px";
-    const count = Math.min(90, Math.floor((innerWidth * innerHeight) / 16000));
+    const count = Math.min(PERF.lite ? 34 : 80, Math.floor((innerWidth * innerHeight) / (PERF.lite ? 22000 : 16000)));
     nodes = Array.from({ length: count }, () => ({
       x: Math.random() * w, y: Math.random() * h,
       vx: (Math.random() - 0.5) * 0.35 * dpr, vy: (Math.random() - 0.5) * 0.35 * dpr,
@@ -259,7 +290,8 @@ if (!reduceMotion) {
   }
   resize();
   addEventListener("resize", resize);
-  addEventListener("pointermove", (e) => { mouse.x = e.clientX * dpr; mouse.y = e.clientY * dpr; });
+  addEventListener("perf-lite", () => { resize.force = true; resize(); });
+  if (finePointer) addEventListener("pointermove", (e) => { mouse.x = e.clientX * dpr; mouse.y = e.clientY * dpr; }, { passive: true });
   document.addEventListener("pointerleave", () => { mouse.x = mouse.y = -9999; });
 
   let running = true;
@@ -269,42 +301,48 @@ if (!reduceMotion) {
   });
 
   const LINK = 140;
-  function draw() {
+  let lastFrame = 0;
+  function draw(now = performance.now()) {
     if (!running) return;
+    requestAnimationFrame(draw);
+    // frame cap (30 fps on lite devices) — movement scales with elapsed time
+    const dt = now - lastFrame;
+    if (dt < 1000 / PERF.fps - 2) return;
+    lastFrame = now;
+    const k = Math.min(dt / 16.7, 3);
     // particles drift with scroll (parallax by depth)
     const delta = scrollY - lastScroll; lastScroll = scrollY;
     scrollShift += (delta - scrollShift) * 0.15;
     ctx.clearRect(0, 0, w, h);
-    const link = LINK * dpr;
+    const link = LINK * dpr, link2 = link * link, mr = 180 * dpr, mr2 = mr * mr;
     for (const n of nodes) {
-      n.x += n.vx; n.y += n.vy - scrollShift * n.z * 0.5 * dpr;
+      n.x += n.vx * k; n.y += n.vy * k - scrollShift * n.z * 0.5 * dpr;
       if (n.x < 0 || n.x > w) n.vx *= -1;
       if (n.y < -20) n.y = h + 20; else if (n.y > h + 20) n.y = -20;
-      const mdx = mouse.x - n.x, mdy = mouse.y - n.y, md = Math.hypot(mdx, mdy);
-      if (md < 180 * dpr) { n.x += mdx * 0.004; n.y += mdy * 0.004; }
+      const mdx = mouse.x - n.x, mdy = mouse.y - n.y;
+      if (mdx * mdx + mdy * mdy < mr2) { n.x += mdx * 0.004; n.y += mdy * 0.004; }
     }
+    ctx.lineWidth = dpr * 0.8;
     for (let i = 0; i < nodes.length; i++) {
       const a = nodes[i];
       for (let j = i + 1; j < nodes.length; j++) {
         const b = nodes[j];
-        const d = Math.hypot(a.x - b.x, a.y - b.y);
-        if (d < link) {
-          ctx.strokeStyle = `rgba(110, 140, 255, ${(1 - d / link) * 0.35})`;
-          ctx.lineWidth = dpr * 0.8;
+        const dx = a.x - b.x, dy = a.y - b.y, d2 = dx * dx + dy * dy;
+        if (d2 < link2) {
+          ctx.strokeStyle = `rgba(110, 140, 255, ${(1 - Math.sqrt(d2) / link) * 0.35})`;
           ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
         }
       }
-      const md = Math.hypot(mouse.x - a.x, mouse.y - a.y);
-      if (md < 180 * dpr) {
-        ctx.strokeStyle = `rgba(34, 228, 255, ${(1 - md / (180 * dpr)) * 0.5})`;
+      const mdx = mouse.x - a.x, mdy = mouse.y - a.y, md2 = mdx * mdx + mdy * mdy;
+      if (md2 < mr2) {
+        ctx.strokeStyle = `rgba(34, 228, 255, ${(1 - Math.sqrt(md2) / mr) * 0.5})`;
         ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
       }
       ctx.fillStyle = `rgba(160, 180, 255, ${0.4 + a.z * 0.5})`;
       ctx.beginPath(); ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2); ctx.fill();
     }
-    requestAnimationFrame(draw);
   }
-  draw();
+  requestAnimationFrame(draw);
 })();
 
 /* =========================================================
@@ -420,7 +458,9 @@ if (hasGSAP) {
         el.classList.add("visible");
         el.querySelectorAll(".counter").forEach(runCounter);
       });
-      gsap.fromTo(batch,
+      if (PERF.lite) // same rise, without the costly blur filter
+        gsap.fromTo(batch, { autoAlpha: 0, y: 50 }, { autoAlpha: 1, y: 0, duration: 0.9, ease: "expo.out", stagger: 0.08 });
+      else gsap.fromTo(batch,
         { autoAlpha: 0, y: 70, filter: "blur(10px)" },
         { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 1.2, ease: "expo.out", stagger: 0.12, clearProps: "filter" });
     },
@@ -460,8 +500,16 @@ if (hasGSAP) {
   const rows = gsap.utils.toArray(".marquee-row").map((row) => {
     const track = row.querySelector(".marquee-track");
     track.innerHTML += track.innerHTML; // duplicate for seamless loop
-    return { track, dir: +row.dataset.dir, x: 0 };
+    return { track, dir: +row.dataset.dir, x: 0, half: track.scrollWidth / 2, setX: gsap.quickSetter(track, "x", "px") };
   });
+  // measure once (and on resize) instead of every frame — avoids layout thrashing
+  const measureRows = () => rows.forEach((r) => (r.half = r.track.scrollWidth / 2));
+  addEventListener("resize", measureRows);
+  addEventListener("load", measureRows);
+  // only animate the marquee while it is on screen
+  let marqueeOn = true;
+  const mq = document.querySelector(".marquee");
+  if (mq) new IntersectionObserver(([e]) => (marqueeOn = e.isIntersecting)).observe(mq);
   let boost = 1, scrollDir = 1, skewTarget = 0;
 
   ScrollTrigger.create({
@@ -478,13 +526,15 @@ if (hasGSAP) {
 
   gsap.ticker.add(() => {
     boost += (1 - boost) * 0.05;
-    rows.forEach((r) => {
-      const half = r.track.scrollWidth / 2;
+    if (marqueeOn) rows.forEach((r) => {
       r.x -= 0.6 * boost * r.dir * scrollDir;
-      r.x = gsap.utils.wrap(-half, 0, r.x);
-      gsap.set(r.track, { x: r.x });
+      r.x = gsap.utils.wrap(-r.half, 0, r.x);
+      r.setX(r.x);
     });
-    // ease skew back toward 0
+    // ease skew back toward 0 (skipped on lite devices: skewing big blocks forces repaints)
+    if (PERF.lite) return;
+    if (Math.abs(skewTarget) < 0.01 && skewTarget !== 0) { skewTarget = 0; skewTo(0); return; }
+    if (skewTarget === 0) return;
     skewTarget *= 0.9;
     skewTo(skewTarget);
   });
