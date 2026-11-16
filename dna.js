@@ -230,8 +230,12 @@
   const ctx = hc.getContext("2d");
   let W, H, DPR, rows = [];
   const ROWS = 16, DAY = 34; // px per "day" (css px)
-  function build() {
-    DPR = Math.min(devicePixelRatio || 1, 2);
+  const PERF = window.PERF || { lite: false, fps: 60 };
+  let lastW = 0;
+  function build(force) {
+    if (force !== true && lastW === innerWidth && rows.length) return; // ignore mobile address-bar resizes
+    lastW = innerWidth;
+    DPR = PERF.lite ? 1 : Math.min(devicePixelRatio || 1, 1.5);
     W = hc.width = innerWidth * DPR; H = hc.height = innerHeight * DPR;
     hc.style.width = innerWidth + "px"; hc.style.height = innerHeight + "px";
     const span = Math.ceil(innerWidth / DAY) + 20;
@@ -246,22 +250,23 @@
       return { bars, span: d };
     });
   }
-  build();
+  build(true);
   addEventListener("resize", build);
+  addEventListener("perf-lite", () => build(true));
 
   const mouse = { x: 0, y: 0, sx: 0, sy: 0 };
-  addEventListener("pointermove", (e) => { mouse.x = e.clientX / innerWidth - 0.5; mouse.y = e.clientY / innerHeight - 0.5; });
+  addEventListener("pointermove", (e) => { mouse.x = e.clientX / innerWidth - 0.5; mouse.y = e.clientY / innerHeight - 0.5; }, { passive: true });
 
   let time = 0, vel = 0, lastY = scrollY;
   let running = true;
   document.addEventListener("visibilitychange", () => { running = !document.hidden; if (running) requestAnimationFrame(loop); });
 
-  function draw() {
+  function draw(k) {
     const mobile = innerWidth < 900;
     const dy = scrollY - lastY; lastY = scrollY;
     vel += dy * 0.004 + kick * 0.6; kick = 0;
     vel *= 0.9;
-    time += 0.012 + vel * 0.05;
+    time += 0.012 * k + vel * 0.05;
     mouse.sx += (mouse.x - mouse.sx) * 0.05;
     mouse.sy += (mouse.y - mouse.sy) * 0.05;
     for (let i = 0; i < 3; i++) color.cur[i] += (color.target[i] - color.cur[i]) * 0.05;
@@ -344,8 +349,7 @@
     // today line
     ctx.strokeStyle = rgba(color.cur, 0.9);
     ctx.lineWidth = 1.5 * DPR;
-    ctx.shadowColor = rgba(color.cur, 1);
-    ctx.shadowBlur = 12 * DPR;
+    if (!PERF.lite) { ctx.shadowColor = rgba(color.cur, 1); ctx.shadowBlur = 12 * DPR; }
     ctx.beginPath(); ctx.moveTo(todayX, -rowH); ctx.lineTo(todayX, H * 1.3); ctx.stroke();
     ctx.shadowBlur = 0;
     ctx.fillStyle = rgba(color.cur, 1);
@@ -353,10 +357,14 @@
     ctx.restore();
   }
 
-  function loop() {
+  let lastFrame = 0;
+  function loop(now = performance.now()) {
     if (!running) return;
-    draw();
     requestAnimationFrame(loop);
+    const dt = now - lastFrame;
+    if (dt < 1000 / PERF.fps - 2) return; // 30 fps cap on lite devices
+    lastFrame = now;
+    draw(Math.min(dt / 16.7, 3));
   }
   requestAnimationFrame(loop);
 })();
