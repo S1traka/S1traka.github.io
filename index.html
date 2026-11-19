@@ -29,7 +29,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.css" />
-  <link rel="stylesheet" href="style.css?v=2611171100" />
+  <link rel="stylesheet" href="style.css?v=2611191000" />
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="9fc213f7-0159-41c6-8dc7-e75de37e3836"></script>
 </head>
 <body>
   <!-- Boot loader -->
@@ -57,13 +58,13 @@
     <nav class="nav-links">
       <a href="#about" data-i18n="nav.about">À propos</a>
       <a href="#experience" data-i18n="nav.exp">Expérience</a>
-      <a href="#projects" data-i18n="nav.projects">Projets</a>
+      <a data-umami-event="see-projects" href="#projects" data-i18n="nav.projects">Projets</a>
       <a href="#education" data-i18n="nav.edu">Formation</a>
       <a href="#skills" data-i18n="nav.skills">Compétences</a>
       <a href="#photography" data-i18n="nav.photo">Photo</a>
       <a href="#contact" class="nav-cta" data-i18n="nav.contact">Contact</a>
       <span class="nav-switches">
-        <button class="lang-toggle" type="button" title="Français / English"><b data-l="fr"><svg class="flag" viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055a4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ef4135"/></svg>FR</b>·<b data-l="en"><svg class="flag" viewBox="0 0 60 30" aria-hidden="true"><clipPath id="uk"><path d="M30 15h30v15zv15H0zH0V0zV0h30z"/></clipPath><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" clip-path="url(#uk)" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></svg>EN</b></button>
+        <button data-umami-event="lang-switch" class="lang-toggle" type="button" title="Français / English"><b data-l="fr"><svg class="flag" viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055a4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ef4135"/></svg>FR</b>·<b data-l="en"><svg class="flag" viewBox="0 0 60 30" aria-hidden="true"><clipPath id="uk"><path d="M30 15h30v15zv15H0zH0V0zV0h30z"/></clipPath><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" clip-path="url(#uk)" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></svg>EN</b></button>
         <button class="fx-toggle" type="button" aria-pressed="true" title="Animations">FX <b>ON</b></button>
       </span>
     </nav>
@@ -84,8 +85,8 @@
           et en <strong>marketing digital</strong>, et je photographie produits et événements.
         </p>
         <div class="hero-actions">
-          <a href="#projects" class="btn btn-primary" data-i18n="hero.cta1">Voir mes projets</a>
-          <a href="cv.pdf?v=2611171100" class="btn btn-ghost" download="CV_Sitraka_RANDRIANARIJAONA_FR.pdf" data-i18n="hero.cta2">CV (PDF)</a>
+          <a data-umami-event="see-projects" href="#projects" class="btn btn-primary" data-i18n="hero.cta1">Voir mes projets</a>
+          <a data-umami-event="cv-download" href="cv.pdf?v=2611171100" class="btn btn-ghost" download="CV_Sitraka_RANDRIANARIJAONA_FR.pdf" data-i18n="hero.cta2">CV (PDF)</a>
         </div>
       </div>
       <div class="hero-photo reveal">
@@ -242,7 +243,7 @@
             </div>
           </details>
           <div class="shots shots-one">
-            <a href="img/vonjymaika-map.png" target="_blank" rel="noopener"><img src="img/vonjymaika-map.png" loading="lazy" width="412" height="796" alt="Maquette VonjyMaika : carte des évènements" /><span data-i18n="shot.vm">Maquette Adobe XD : carte des évènements (profil Visiteur)</span></a>
+            <a data-umami-event="open-screenshot" href="img/vonjymaika-map.png" target="_blank" rel="noopener"><img src="img/vonjymaika-map.png" loading="lazy" width="412" height="796" alt="Maquette VonjyMaika : carte des évènements" /><span data-i18n="shot.vm">Maquette Adobe XD : carte des évènements (profil Visiteur)</span></a>
           </div>
           <ul class="chips"><li>Business Model Canvas</li><li>SWOT · PESTEL</li><li>7P</li><li data-i18n="chip.fin">Prévisions financières</li><li>Adobe XD</li></ul>
         </article>
@@ -278,10 +279,10 @@
           </div>
           <div class="shots">
             <p class="shots-note" data-i18n="p3.shots">Captures réelles du projet — noms du client et des fournisseurs masqués</p>
-            <a href="img/etech-jira-bug.png" target="_blank" rel="noopener"><img src="img/etech-jira-bug.png" loading="lazy" alt="Ticket de bug Jira" /><span data-i18n="shot.1">Ticket de bug qualifié (Jira)</span></a>
-            <a href="img/etech-network-500.png" target="_blank" rel="noopener"><img src="img/etech-network-500.png" loading="lazy" alt="Analyse réseau montrant une erreur 500" /><span data-i18n="shot.2">Diagnostic d'une erreur 500 (outils développeur)</span></a>
-            <a href="img/etech-map-risk.png" target="_blank" rel="noopener"><img src="img/etech-map-risk.png" loading="lazy" alt="Carte des fournisseurs annotée" /><span data-i18n="shot.3">Anomalie annotée sur la carte des fournisseurs</span></a>
-            <a href="img/etech-map-layers.png" target="_blank" rel="noopener"><img src="img/etech-map-layers.png" loading="lazy" alt="Carte avec calques" /><span data-i18n="shot.4">Recette de l'intégration cartographique (calques)</span></a>
+            <a data-umami-event="open-screenshot" href="img/etech-jira-bug.png" target="_blank" rel="noopener"><img src="img/etech-jira-bug.png" loading="lazy" alt="Ticket de bug Jira" /><span data-i18n="shot.1">Ticket de bug qualifié (Jira)</span></a>
+            <a data-umami-event="open-screenshot" href="img/etech-network-500.png" target="_blank" rel="noopener"><img src="img/etech-network-500.png" loading="lazy" alt="Analyse réseau montrant une erreur 500" /><span data-i18n="shot.2">Diagnostic d'une erreur 500 (outils développeur)</span></a>
+            <a data-umami-event="open-screenshot" href="img/etech-map-risk.png" target="_blank" rel="noopener"><img src="img/etech-map-risk.png" loading="lazy" alt="Carte des fournisseurs annotée" /><span data-i18n="shot.3">Anomalie annotée sur la carte des fournisseurs</span></a>
+            <a data-umami-event="open-screenshot" href="img/etech-map-layers.png" target="_blank" rel="noopener"><img src="img/etech-map-layers.png" loading="lazy" alt="Carte avec calques" /><span data-i18n="shot.4">Recette de l'intégration cartographique (calques)</span></a>
           </div>
           <ul class="chips"><li>Jira</li><li>Kanban</li><li>Daily Scrum</li><li data-i18n="chip.bug">Qualification de bugs</li><li>Release notes</li></ul>
         </article>
@@ -313,9 +314,9 @@
           </div>
           <div class="shots shots-am">
             <p class="shots-note" data-i18n="p4.shots">Captures réelles — données personnelles et chiffres masqués</p>
-            <a href="img/akany-matrix.png" target="_blank" rel="noopener"><img src="img/akany-matrix.png" loading="lazy" width="1236" height="620" alt="Matrice de permissions par rôle" /><span data-i18n="shot.am2">Matrice de permissions : droits par rôle (Invité, Famille, Admin, Super-admin)</span></a>
-            <a href="img/akany-dashboard.png" target="_blank" rel="noopener"><img src="img/akany-dashboard.png" loading="lazy" width="1250" height="200" alt="Tableau de bord Akany Maitso" /><span data-i18n="shot.am3">Portail Dashy : accès aux saisies, à la flotte et à la facturation</span></a>
-            <a href="img/akany-login.png" target="_blank" rel="noopener"><img src="img/akany-login.png" loading="lazy" width="1038" height="650" alt="Page de connexion Akany Maitso" /><span data-i18n="shot.am">Portail sécurisé : page de connexion</span></a>
+            <a data-umami-event="open-screenshot" href="img/akany-matrix.png" target="_blank" rel="noopener"><img src="img/akany-matrix.png" loading="lazy" width="1236" height="620" alt="Matrice de permissions par rôle" /><span data-i18n="shot.am2">Matrice de permissions : droits par rôle (Invité, Famille, Admin, Super-admin)</span></a>
+            <a data-umami-event="open-screenshot" href="img/akany-dashboard.png" target="_blank" rel="noopener"><img src="img/akany-dashboard.png" loading="lazy" width="1250" height="200" alt="Tableau de bord Akany Maitso" /><span data-i18n="shot.am3">Portail Dashy : accès aux saisies, à la flotte et à la facturation</span></a>
+            <a data-umami-event="open-screenshot" href="img/akany-login.png" target="_blank" rel="noopener"><img src="img/akany-login.png" loading="lazy" width="1038" height="650" alt="Page de connexion Akany Maitso" /><span data-i18n="shot.am">Portail sécurisé : page de connexion</span></a>
           </div>
           <ul class="chips"><li>Ubuntu</li><li>CasaOS</li><li>Nextcloud</li><li>NocoDB</li><li>Dashy</li><li>Docker</li><li>Flutter</li><li>Node.js</li><li>Python</li><li>Grafana</li><li>Nginx Proxy Manager</li></ul>
         </article>
@@ -425,9 +426,9 @@
         <p class="form-status" role="status" aria-live="polite"></p>
       </form>
       <div class="contact-links">
-        <a href="mailto:sp.randrianarijaona@gmail.com" class="btn btn-ghost">✉️ sp.randrianarijaona@gmail.com</a>
-        <a href="https://linkedin.com/in/sitrakapaulrandrianarijaona" target="_blank" rel="noopener" class="btn btn-ghost">in · LinkedIn</a>
-        <a href="https://wa.me/261349862293" target="_blank" rel="noopener" class="btn btn-ghost">💬 WhatsApp</a>
+        <a data-umami-event="contact-email" href="mailto:sp.randrianarijaona@gmail.com" class="btn btn-ghost">✉️ sp.randrianarijaona@gmail.com</a>
+        <a data-umami-event="contact-linkedin" href="https://linkedin.com/in/sitrakapaulrandrianarijaona" target="_blank" rel="noopener" class="btn btn-ghost">in · LinkedIn</a>
+        <a data-umami-event="contact-whatsapp" href="https://wa.me/261349862293" target="_blank" rel="noopener" class="btn btn-ghost">💬 WhatsApp</a>
       </div>
     </section>
   </main>
@@ -442,12 +443,12 @@
   </div>
 
   <footer>© <span id="year"></span> Sitraka Paul Randrianarijaona · <span data-i18n="footer.ai">Conçu par moi, développé avec des agents IA</span></footer>
-  <script src="i18n.js?v=2611171100"></script>
+  <script src="i18n.js?v=2611191000"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/SplitText.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
-  <script src="script.js?v=2611171100"></script>
-  <script src="dna.js?v=2611171100"></script>
+  <script src="script.js?v=2611191000"></script>
+  <script src="dna.js?v=2611191000"></script>
 </body>
 </html>
