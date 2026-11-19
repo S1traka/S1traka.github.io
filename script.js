@@ -124,6 +124,7 @@ function runCounter(el) {
       status.textContent = T.ok;
       status.classList.add("ok");
       form.reset();
+      window.umami && umami.track("contact-form-sent");
     } catch {
       status.textContent = T.err;
       status.classList.add("err");
